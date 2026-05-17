@@ -1,0 +1,185 @@
+.education-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.education-timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--primary);
+  opacity: 0.5;
+}
+
+.education-item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 50%;
+  position: relative;
+}
+
+/* Even items go to the right */
+.education-item:nth-child(even) {
+  align-self: flex-end;
+  justify-content: flex-start;
+}
+
+.education-icon {
+  background-color: var(--primary);
+  color: white;
+  min-width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  border: 4px solid var(--bg-color);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+/* Odd items icon position */
+.education-item:nth-child(odd) .education-icon {
+  right: -22.5px;
+}
+
+/* Even items icon position */
+.education-item:nth-child(even) .education-icon {
+  left: -22.5px;
+}
+
+.education-content {
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  width: 90%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Arrow pointers */
+.education-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 10px;
+  border-style: solid;
+}
+
+.education-item:nth-child(odd) .education-content::before {
+  right: -20px;
+  border-color: transparent transparent transparent var(--border-color);
+}
+
+.education-item:nth-child(even) .education-content::before {
+  left: -20px;
+  border-color: transparent var(--border-color) transparent transparent;
+}
+
+
+.education-item:nth-child(odd):hover .education-content {
+  border-color: var(--primary);
+  transform: translateX(-5px);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+}
+
+.education-item:nth-child(even):hover .education-content {
+  border-color: var(--primary);
+  transform: translateX(5px);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+}
+
+.education-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.education-institution {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.education-degree {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.education-date span {
+  background-color: rgba(138, 43, 226, 0.1);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  display: inline-block;
+}
+
+.education-details {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.education-details li {
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .education-timeline::before {
+    left: 22.5px;
+  }
+
+  .education-item {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .education-item:nth-child(even) {
+    align-self: flex-start;
+  }
+
+  .education-item:nth-child(odd) .education-icon,
+  .education-item:nth-child(even) .education-icon {
+    left: 0;
+    right: auto;
+  }
+
+  .education-content {
+    width: calc(100% - 60px);
+  }
+  
+  .education-item:nth-child(odd) .education-content::before,
+  .education-item:nth-child(even) .education-content::before {
+    left: -20px;
+    right: auto;
+    border-color: transparent var(--border-color) transparent transparent;
+  }
+
+  .education-item:nth-child(odd):hover .education-content,
+  .education-item:nth-child(even):hover .education-content {
+    transform: translateX(5px);
+  }
+}

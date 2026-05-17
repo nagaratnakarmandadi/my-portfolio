@@ -1,0 +1,41 @@
+.github-stats {
+  padding: 120px 10%;
+
+  background: #050816;
+
+  color: white;
+
+  text-align: center;
+}
+
+.github-stats h1 {
+  font-size: 3rem;
+
+  margin-bottom: 60px;
+
+  color: #9b5cff;
+}
+
+.stats-container {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 30px;
+}
+
+.stats-container img {
+  width: 500px;
+
+  max-width: 100%;
+
+  border-radius: 20px;
+
+  transition: 0.3s;
+}
+
+.stats-container img:hover {
+  transform: translateY(-10px);
+}
