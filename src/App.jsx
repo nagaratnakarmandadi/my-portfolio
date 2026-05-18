@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Typewriter } from 'react-simple-typewriter';
 import Navbar from "./components/Navbar/Navbar";
 import Education from "./components/Education/Education";
@@ -8,19 +8,61 @@ import Experience from "./components/Experience/Experience";
 import Blogs from "./components/Blogs/Blogs";
 import Contact from "./components/Contact/Contact";
 import { ScrollReveal } from "./components/ScrollReveal";
+import CustomCursor from "./components/CustomCursor/CustomCursor";
 
-import heroImage from "./assets/hero.png";
+import heroImage from "./assets/hero.jpeg";
 import resumePdf from "./assets/resume/resume.pdf";
 import "./App.css";
 import "./AppFooter.css";
 
-import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, FaTwitter, FaJava, FaEnvelope, FaArrowUp } from "react-icons/fa";
+import { SiSpringboot, SiReact, SiJavascript, SiPostgresql } from "react-icons/si";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Toggle scrolled state
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+
+      // Track scroll progress percentage
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const progress = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(progress);
+      }
+
+      // Toggle back to top button visibility
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className={darkMode ? "dark-theme" : "light-theme"}>
+      <div className="scroll-progress" style={{ width: `${scrollProgress}%` }}></div>
+      <CustomCursor />
+      
+      {/* Ambient Glowing Nebulas */}
+      <div className="ambient-glows">
+        <div className="glow-blob glow-1"></div>
+        <div className="glow-blob glow-2"></div>
+        <div className="glow-blob glow-3"></div>
+      </div>
+
       <div className="background-blobs">
         <div className="bubble bubble-1"></div>
         <div className="bubble bubble-2"></div>
@@ -49,7 +91,24 @@ function App() {
       <section className="hero" id="home">
         <div className="hero-content section">
           <div className="hero-image">
-            <img src={heroImage} alt="Developer Illustration" />
+            <img src={heroImage} alt="Nagaratnakar Mandadi" className="hero-avatar" />
+            
+            {/* Floating Tech Logos */}
+            <div className="floating-logo tech-java" title="Java">
+              <FaJava color="#007396" />
+            </div>
+            <div className="floating-logo tech-spring" title="Spring Boot">
+              <SiSpringboot color="#6DB33F" />
+            </div>
+            <div className="floating-logo tech-react" title="React.js">
+              <SiReact color="#61DAFB" />
+            </div>
+            <div className="floating-logo tech-js" title="JavaScript">
+              <SiJavascript color="#F7DF1E" />
+            </div>
+            <div className="floating-logo tech-postgres" title="PostgreSQL">
+              <SiPostgresql color="#4169E1" />
+            </div>
           </div>
           <div className="hero-text-content">
             <h1 className="hero-greeting">Hi, I&apos;m</h1>
@@ -91,6 +150,12 @@ function App() {
             </div>
           </div>
         </div>
+        <div className={`scroll-indicator ${scrolled ? 'fade-out' : ''}`}>
+          <div className="mouse">
+            <div className="wheel"></div>
+          </div>
+          <span>Scroll Down</span>
+        </div>
       </section>
 
       <ScrollReveal><Education /></ScrollReveal>
@@ -111,8 +176,34 @@ function App() {
       <ScrollReveal><Contact /></ScrollReveal>
       
       <footer className="footer">
+        <div className="footer-buttons">
+          <a href="https://github.com/nagaratnakarmandadi" target="_blank" rel="noreferrer" className="footer-btn" title="GitHub">
+            <FaGithub />
+          </a>
+          <a href="https://linkedin.com/in/nagaratnakar-mandadi" target="_blank" rel="noreferrer" className="footer-btn" title="LinkedIn">
+            <FaLinkedin />
+          </a>
+          <a href="https://instagram.com/nagaratnakar_mandadi" target="_blank" rel="noreferrer" className="footer-btn" title="Instagram">
+            <FaInstagram />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noreferrer" className="footer-btn" title="Twitter">
+            <FaTwitter />
+          </a>
+          <a href="mailto:nagaratnakarmandadi@gmail.com" className="footer-btn" title="Email">
+            <FaEnvelope />
+          </a>
+          <a href="#home" className="footer-btn" title="Back to Top">
+            <FaArrowUp />
+          </a>
+        </div>
         <p>&copy; {new Date().getFullYear()} Nagaratnakar Mandadi. Built with React & Vite.</p>
       </footer>
+      
+      {showBackToTop && (
+        <a href="#home" className="floating-back-to-top" title="Back to Top">
+          <FaArrowUp />
+        </a>
+      )}
     </div>
   );
 }

@@ -1,0 +1,67 @@
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10000;
+  transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              height 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              background-color 0.2s ease;
+}
+
+.custom-cursor-dot.hover {
+  width: 6px;
+  height: 6px;
+  background-color: var(--text-purple);
+}
+
+.custom-cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              border-color 0.3s ease, 
+              background-color 0.3s ease;
+}
+
+.custom-cursor-ring.hover {
+  width: 48px;
+  height: 48px;
+  border-color: var(--text-purple);
+  background-color: rgba(139, 92, 246, 0.08);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+/* Hide default cursor on desktop screens to complete premium experience */
+@media (min-width: 1025px) {
+  body, 
+  a, 
+  button, 
+  input, 
+  textarea, 
+  select,
+  .btn-primary,
+  .btn-secondary,
+  .social-links a,
+  .floating-logo,
+  .toast-close {
+    cursor: none !important;
+  }
+}
+
+/* Fallback - Hide custom cursor on mobile/touch screens */
+@media (max-width: 1024px) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none !important;
+  }
+}

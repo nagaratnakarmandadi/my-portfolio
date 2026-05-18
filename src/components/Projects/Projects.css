@@ -17,9 +17,9 @@
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--secondary);
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
 }
 
 .project-card:hover .project-image {
@@ -67,13 +67,106 @@
 }
 
 .project-tag {
-  background-color: rgba(138, 43, 226, 0.1);
-  color: #a78bfa;
   padding: 4px 10px;
   border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 500;
-  border: 1px solid rgba(138, 43, 226, 0.2);
+  border: 1px solid transparent;
+  backdrop-filter: blur(5px);
+}
+
+.tag-react {
+  background-color: rgba(97, 218, 251, 0.08);
+  color: #61dafb;
+  border-color: rgba(97, 218, 251, 0.2);
+}
+
+.tag-spring {
+  background-color: rgba(109, 179, 63, 0.08);
+  color: #6db33f;
+  border-color: rgba(109, 179, 63, 0.2);
+}
+
+.tag-java {
+  background-color: rgba(224, 117, 36, 0.08);
+  color: #e07524;
+  border-color: rgba(224, 117, 36, 0.2);
+}
+
+.tag-db {
+  background-color: rgba(59, 130, 246, 0.08);
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.tag-security {
+  background-color: rgba(167, 139, 250, 0.08);
+  color: #a78bfa;
+  border-color: rgba(167, 139, 250, 0.2);
+}
+
+.tag-fastapi {
+  background-color: rgba(5, 150, 105, 0.08);
+  color: #059669;
+  border-color: rgba(5, 150, 105, 0.2);
+}
+
+.tag-javascript {
+  background-color: rgba(247, 223, 30, 0.08);
+  color: #f7df1e;
+  border-color: rgba(247, 223, 30, 0.25);
+}
+
+.tag-default {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-muted);
+  border-color: var(--border-color);
+}
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.project-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  flex: 1;
+  justify-content: center;
+}
+
+.project-link-btn.github {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+}
+
+.project-link-btn.github:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.project-link-btn.demo {
+  background: var(--primary);
+  color: #ffffff;
+  border: 1px solid var(--primary);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+}
+
+.project-link-btn.demo:hover {
+  background: var(--text-purple);
+  border-color: var(--text-purple);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+  transform: translateY(-2px);
 }
 
 @media screen and (max-width: 960px) {

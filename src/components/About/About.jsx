@@ -8,12 +8,11 @@ function About() {
 
       <p className="about-description">
         Motivated Computer Science student passionate about
-        Java Full Stack Development, backend technologies,
-        and problem-solving.
-
-        Currently learning Core Java, DSA, JDBC, and modern
-        web technologies while continuously improving logical
-        thinking through daily coding practice and projects.
+        Java Full Stack Development, robust backend systems,
+        and algorithmic problem-solving.
+        
+        Proficient in Core Java, Spring Boot, relational databases, and modern web architectures. 
+        Dedicated to building clean, high-performance, scalable full-stack applications with solid logical foundations.
       </p>
 
       <div className="about-cards">
@@ -22,8 +21,8 @@ function About() {
           <h2>Frontend</h2>
 
           <p>
-            Building responsive interfaces using
-            HTML, CSS, JavaScript, and React.js.
+            Designing responsive, dynamic interfaces using
+            HTML5, CSS3, JavaScript, and React.js.
           </p>
         </div>
 
@@ -31,8 +30,8 @@ function About() {
           <h2>Backend</h2>
 
           <p>
-            Learning Core Java, JDBC,
-            OOPs concepts, and backend logic.
+            Developing secure, scalable RESTful APIs with 
+            Spring Boot, Spring Security (JWT), Hibernate, and relational databases.
           </p>
         </div>
 
@@ -40,8 +39,8 @@ function About() {
           <h2>Problem Solving</h2>
 
           <p>
-            Practicing DSA and aptitude
-            to improve logical thinking skills.
+            Solving complex algorithmic problems using DSA 
+            to optimize software performance and system logic.
           </p>
         </div>
 

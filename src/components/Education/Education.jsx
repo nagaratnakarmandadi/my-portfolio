@@ -21,7 +21,7 @@ function Education() {
       institution: "St. Ann's Convent English Medium School",
       degree: "ICSE Schooling",
       date: "2010 - 2021",
-      details: [],
+      details: ["Percentage: 78%"],
       icon: FaSchool
     }
   ];

@@ -1,13 +1,16 @@
 import "./Contact.css";
 import emailjs from "@emailjs/browser";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub } from "react-icons/fa";
 
 function Contact() {
   const form = useRef();
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
+  const [isSending, setIsSending] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setIsSending(true);
 
     emailjs.sendForm(
       "service_h5q0tma",
@@ -16,10 +19,18 @@ function Contact() {
       "gzdQQUCjOqi5w6Mys"
     )
     .then(() => {
-      alert("Message Sent Successfully!");
+      setToast({ show: true, message: "Message Sent Successfully! 🚀", type: "success" });
+      setIsSending(false);
+      setTimeout(() => {
+        setToast({ show: false, message: "", type: "" });
+      }, 4000);
     })
     .catch(() => {
-      alert("Failed to send message");
+      setToast({ show: true, message: "Failed to send message. Please try again! ❌", type: "error" });
+      setIsSending(false);
+      setTimeout(() => {
+        setToast({ show: false, message: "", type: "" });
+      }, 4000);
     });
 
     e.target.reset();
@@ -34,6 +45,9 @@ function Contact() {
           Get In Touch
         </div>
       </div>
+      <p className="contact-subtitle">
+        Feel free to connect! Whether you have an exciting project idea, a job opportunity, or just want to say hello, my inbox is always open. I will do my best to get back to you as soon as possible!
+      </p>
       <div className="contact-container">
         
         <div className="contact-left">
@@ -99,13 +113,32 @@ function Contact() {
               rows="5"
               required
             ></textarea>
-            <button type="submit" className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>
-              Send Message &rarr;
+            <button 
+              type="submit" 
+              className="btn-primary" 
+              disabled={isSending} 
+              style={{ width: "100%", justifyContent: "center", opacity: isSending ? 0.75 : 1, cursor: isSending ? "not-allowed" : "pointer" }}
+            >
+              {isSending ? "Sending Message... 🚀" : "Send Message →"}
             </button>
           </form>
         </div>
         
       </div>
+
+      {/* Floating Glassmorphic Toast Notification */}
+      {toast.show && (
+        <div className={`toast-notification ${toast.type}`}>
+          <span className="toast-message">{toast.message}</span>
+          <button 
+            type="button" 
+            className="toast-close" 
+            onClick={() => setToast({ show: false, message: "", type: "" })}
+          >
+            &times;
+          </button>
+        </div>
+      )}
     </section>
   );
 }

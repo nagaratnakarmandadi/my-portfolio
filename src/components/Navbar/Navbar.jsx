@@ -18,7 +18,37 @@ function Navbar({ darkMode, setDarkMode }) {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Scroll Spy using IntersectionObserver
+    const observerOptions = {
+      root: null,
+      rootMargin: "-45% 0px -45% 0px", // Triggers when section covers the center-third of the screen
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          const activeNav = navLinks.find((link) => link.href === `#${id}`);
+          if (activeNav) {
+            setActiveLink(activeNav.name);
+          }
+        }
+      });
+    }, observerOptions);
+
+    const sections = navLinks.map((link) => document.querySelector(link.href));
+    sections.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      sections.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
+    };
   }, []);
 
   const navLinks = [
@@ -59,7 +89,7 @@ function Navbar({ darkMode, setDarkMode }) {
             </li>
           ))}
           <li className="nav-actions">
-            <a href="https://github.com/nagaratnakarmandadi" target="_blank" rel="noreferrer" className="btn-nav-icon" aria-label="GitHub">
+            <a href="https://github.com/nagaratnakarmandadi" target="_blank" rel="noreferrer" className="btn-nav-icon btn-nav-github" aria-label="GitHub">
               <FaGithub />
             </a>
             <button className="btn-nav-icon" onClick={() => setDarkMode(!darkMode)} aria-label="Toggle Theme">

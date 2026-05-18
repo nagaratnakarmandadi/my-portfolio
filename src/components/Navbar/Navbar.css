@@ -5,7 +5,7 @@
   left: 0;
   z-index: 1000;
   transition: all 0.3s ease;
-  padding: 20px 0;
+  padding: 14px 0;
   background-color: transparent;
 }
 
@@ -13,7 +13,7 @@
   background-color: var(--nav-bg);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 15px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -33,21 +33,21 @@
 
 .logo-first {
   font-family: var(--font-logo);
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--text-main);
 }
 
 .logo-last {
   font-family: var(--font-main);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--primary);
 }
 
 .nav-links {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   align-items: center;
 }
 
@@ -57,11 +57,11 @@
 
 .nav-links a {
   color: var(--text-main);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
-  padding: 8px 16px;
+  padding: 6px 12px;
   border-radius: 99px;
   z-index: 1;
 }
@@ -125,6 +125,20 @@
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.btn-nav-github {
+  font-size: 1.35rem !important; /* Larger icon size! */
+  border-color: rgba(139, 92, 246, 0.35) !important; /* Subtle glowing border accent */
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.1);
+}
+
+.btn-nav-github:hover {
+  background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+  border-color: transparent !important;
+  color: white !important;
+  transform: translateY(-2px) scale(1.08) !important;
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45) !important;
 }
 
 .btn-nav-primary {

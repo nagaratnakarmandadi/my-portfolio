@@ -1,3 +1,9 @@
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .experience-card {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
@@ -15,6 +21,32 @@
   transform: translateY(-5px);
 }
 
+.badge {
+  margin-top: 15px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid transparent;
+  backdrop-filter: blur(5px);
+}
+
+.badge.present {
+  background-color: rgba(139, 92, 246, 0.15);
+  color: var(--primary);
+  border-color: rgba(139, 92, 246, 0.25);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.1);
+}
+
+.badge.completed {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.25);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.1);
+}
+
 .experience-logo-box {
   width: 250px;
   background-color: rgba(13, 17, 23, 0.5);
@@ -27,9 +59,29 @@
 }
 
 .experience-logo-icon {
-  font-size: 4rem;
-  color: var(--text-main);
+  font-size: 3.5rem;
   margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.senior-icon {
+  color: var(--primary);
+  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.4));
+}
+
+.junior-icon {
+  color: #10b981;
+  filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.4));
+}
+
+.experience-card:hover .senior-icon {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 0 18px rgba(139, 92, 246, 0.7));
+}
+
+.experience-card:hover .junior-icon {
+  transform: scale(1.1) rotate(-5deg);
+  filter: drop-shadow(0 0 18px rgba(16, 185, 129, 0.7));
 }
 
 .experience-logo-text {
